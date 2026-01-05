@@ -1,11 +1,16 @@
 import { useState } from "react";
 import RoleSelector from "./components/RoleSelector";
 import QuestionCard from "./components/QuestionCard";
+import AnswerBox from "./components/AnswerBox";
+import FeedbackCard from "./components/FeedbackCard";
 
 function App() {
   const [role, setRole] = useState("");
   const [level, setLevel] = useState("");
   const [question, setQuestion] = useState("");
+  const [answer, setAnswer] = useState("");
+  const [feedback, setFeedback] = useState(null);
+
 
   return (
     <div style={{ padding: "40px" }}>
@@ -28,6 +33,13 @@ function App() {
       {question && (
         <p style={{marginTop: "20px", fontWeight: "bold"}}>{question}</p>
       )}
+
+      {question && (
+        <AnswerBox answer={answer} setAnswer={setAnswer} setFeedback={setFeedback} />
+      )}
+
+      {feedback && <FeedbackCard feedback={feedback}/>}
+
     </div>
   );
 }

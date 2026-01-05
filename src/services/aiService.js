@@ -1,6 +1,9 @@
-export async function getInterviewQuestion(role, level) {
-  // Simulating AI delay
-  await new Promise((resolve) => setTimeout(resolve, 800));
+export async function evaluateAnswer(answer) {
+  await new Promise((resolve) => setTimeout(resolve, 1000));
 
-  return `Explain core concepts of ${role} for a ${level} level candidate.`;
+  return {
+    score: 8,
+    strengths: "Good clarity and structure in explanation",
+    improvements: "Add examples and discuss edge cases",
+  };
 }
