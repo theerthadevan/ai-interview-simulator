@@ -7,8 +7,8 @@ function QuestionCard({ role, level, setQuestion }) {
   }
 
   return (
-    <div style={{ marginTop: "20px" }}>
-      <button onClick={handleGenerate}>
+    <div className="section">
+      <button className="primary" onClick={handleGenerate}>
         Generate Interview Question
       </button>
     </div>

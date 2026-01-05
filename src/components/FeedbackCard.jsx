@@ -1,17 +1,10 @@
 function FeedbackCard({ feedback }) {
   if (feedback.loading) {
-    return <p>Evaluating answer...</p>;
+    return <p className="section">Evaluating answer...</p>;
   }
 
   return (
-    <div
-      style={{
-        marginTop: "30px",
-        border: "1px solid #ccc",
-        padding: "15px",
-        borderRadius: "6px",
-      }}
-    >
+    <div className="feedback-card">
       <h3>AI Feedback</h3>
       <p><strong>Score:</strong> {feedback.score}/10</p>
       <p><strong>Strengths:</strong> {feedback.strengths}</p>
