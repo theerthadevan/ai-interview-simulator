@@ -1,5 +1,9 @@
+import { evaluateAnswer } from "../services/aiService";
+
 function AnswerBox({ answer, setAnswer, setFeedback }) {
   async function handleSubmit() {
+    if (!answer.trim()) return;
+
     setFeedback({ loading: true });
     const result = await evaluateAnswer(answer);
     setFeedback(result);
@@ -23,7 +27,7 @@ function AnswerBox({ answer, setAnswer, setFeedback }) {
         Evaluate Answer
       </button>
     </div>
-  )
+  );
 }
 
-export default AnswerBox
+export default AnswerBox;

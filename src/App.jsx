@@ -11,35 +11,48 @@ function App() {
   const [answer, setAnswer] = useState("");
   const [feedback, setFeedback] = useState(null);
 
-
   return (
-    <div style={{ padding: "40px" }}>
+    <div style={{ padding: "40px", maxWidth: "800px", margin: "auto" }}>
       <h1>AI Interview Simulator</h1>
 
       <RoleSelector setRole={setRole} setLevel={setLevel} />
+
       <p>Role: {role}</p>
       <p>Level: {level}</p>
 
       {role && level && (
-        <p style={{marginTop: "20px"}}>
+        <p style={{ marginTop: "20px" }}>
           Ready to generate a question for a {level} {role}
         </p>
       )}
 
       {role && level && (
-        <QuestionCard role={role} level={level} setQuestion={setQuestion}/>
+        <QuestionCard
+          role={role}
+          level={level}
+          setQuestion={(q) => {
+            setQuestion(q);
+            setAnswer("");
+            setFeedback(null);
+          }}
+        />
       )}
 
       {question && (
-        <p style={{marginTop: "20px", fontWeight: "bold"}}>{question}</p>
+        <>
+          <p style={{ marginTop: "20px", fontWeight: "bold" }}>
+            {question}
+          </p>
+
+          <AnswerBox
+            answer={answer}
+            setAnswer={setAnswer}
+            setFeedback={setFeedback}
+          />
+        </>
       )}
 
-      {question && (
-        <AnswerBox answer={answer} setAnswer={setAnswer} setFeedback={setFeedback} />
-      )}
-
-      {feedback && <FeedbackCard feedback={feedback}/>}
-
+      {feedback && <FeedbackCard feedback={feedback} />}
     </div>
   );
 }
